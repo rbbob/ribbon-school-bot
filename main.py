@@ -23,7 +23,10 @@ FAQ = {
 
 @app.route("/")
 def hello():
-    return "リボンスクールBotが稼働中です！"
+    # デバッグ用（後で削除）
+    token = os.environ.get('CHANNEL_ACCESS_TOKEN', 'Not Set')
+    secret = os.environ.get('CHANNEL_SECRET', 'Not Set')
+    return f"リボンスクールBotが稼働中です！<br>Token設定: {'OK' if len(token) > 100 else 'NG'} (長さ: {len(token)})<br>Secret設定: {'OK' if len(secret) > 20 else 'NG'}"
 
 @app.route("/callback", methods=['POST'])
 def callback():
